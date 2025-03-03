@@ -64,8 +64,8 @@ label define msm_12m 0 "No" 1 "Yes"
 label values msm_12m msm_12m
 
 gen inc_hcv = 0
-	recode inc_hcv 0= 1 if all_hcv_rna == 1
-	recode inc_hcv 0=. if all_hcv_ab == 1
+	recode inc_hcv 0=1 if all_hcv_rna == 1
+	recode inc_hcv 0=. if all_hcv_ab == 1 & all_hcv_rna !=.
 	
 la var inc_hcv "Incident HCV infection (all participants)"
 label define inc_hcv 0 "No" 1 "Yes"
@@ -140,8 +140,8 @@ label define msm_12m 0 "No" 1 "Yes"
 label values msm_12m msm_12m
 
 gen inc_hcv = 0
-	recode inc_hcv 0= 1 if all_hcv_rna == 1
-	recode inc_hcv 0=. if all_hcv_ab == 1
+	recode inc_hcv 0=1 if all_hcv_rna == 1
+	recode inc_hcv 0=. if all_hcv_ab == 1 & all_hcv_rna !=.
 	
 la var inc_hcv "Incident HCV infection (all participants)"
 label define inc_hcv 0 "No" 1 "Yes"
@@ -153,7 +153,7 @@ gen dataset = 1
 tab sexmen gender, m // missing for 4 participants (two men two women)
 tab msm_12m gender, m
 
-keep id date age age_cat3 gender homeless_12m homeless_ever prison_12m prison_ever prison_num_12m oat_current oat_ever inj_dur inj_freq_4w inj_freq_day sw_men_12m sw_women_12m sw_all_12m msm_12m inc_hcv dataset
+keep id date age age_cat3 gender homeless_12m homeless_ever prison_12m prison_ever prison_num_12m oat_current oat_ever inj_dur inj_freq_4w inj_freq_day sw_men_12m sw_women_12m sw_all_12m msm_12m inc_hcv all_hcv_rna all_hcv_ab  dataset
 save "C:\Users\vl22683\OneDrive - University of Bristol\Documents\Publications\Sex work and risk of HIV and HCV\Emails to authors\UK data\Birmingham_subset.dta", replace
 
 * load Leeds data
@@ -221,8 +221,8 @@ label define msm_12m 0 "No" 1 "Yes"
 label values msm_12m msm_12m
 
 gen inc_hcv = 0
-	recode inc_hcv 0= 1 if all_hcv_rna == 1
-	recode inc_hcv 0=. if all_hcv_ab == 1
+	recode inc_hcv 0=1 if all_hcv_rna == 1
+	recode inc_hcv 0=. if all_hcv_ab == 1 & all_hcv_rna !=.
 	
 la var inc_hcv "Incident HCV infection (all participants)"
 label define inc_hcv 0 "No" 1 "Yes"
@@ -237,7 +237,7 @@ tab sw_women_12m gender, m
 tab sexmen gender, m // missing for 7 participants (all women)
 tab msm_12m gender, m // not missing for any men
 
-keep id date age age_cat3 gender homeless_12m homeless_ever prison_12m prison_ever prison_num_12m oat_current oat_ever inj_dur inj_freq_4w inj_freq_day sw_men_12m sw_women_12m sw_all_12m msm_12m inc_hcv dataset
+keep id date age age_cat3 gender homeless_12m homeless_ever prison_12m prison_ever prison_num_12m oat_current oat_ever inj_dur inj_freq_4w inj_freq_day sw_men_12m sw_women_12m sw_all_12m msm_12m inc_hcv all_hcv_rna all_hcv_ab  dataset
 save "C:\Users\vl22683\OneDrive - University of Bristol\Documents\Publications\Sex work and risk of HIV and HCV\Emails to authors\UK data\Leeds_subset.dta", replace
 
 * append datasets
